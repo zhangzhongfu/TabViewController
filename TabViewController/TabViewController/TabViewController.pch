@@ -1,0 +1,53 @@
+//
+//  TabViewController.pch
+//  TabViewController
+//
+//  Created by zzf on 06/02/2018.
+//  Copyright © 2018 zzf. All rights reserved.
+//
+
+#ifndef TabViewController_h
+#define TabViewController_h
+
+#import "UIView+BdbsFrame.h"
+
+#define IS_IPHONEX_DEVICE (ScreenHeight == 812.0f)
+
+#define kBdbsNavigationBarAndStatusBarHeight \
+(IS_IPHONEX_DEVICE ? 88.0f : 64.0f)
+
+#define BDBS_STATUS_BAR_HEIGHT \
+(IS_IPHONEX_DEVICE ? 44.0f : 20.0f)
+
+#define BDBS_TAB_BAR_HEIGHT \
+(IS_IPHONEX_DEVICE ? 83.0f : 49.0f)
+
+#define BDBS_VIRTUAL_HOME_AREA_HEIGHT  \
+(IS_IPHONEX_DEVICE ? 34.0f : 0.0f)
+
+#define ScreenWidth \
+([UIScreen mainScreen].bounds.size.width)
+
+#define ScreenHeight \
+([UIScreen mainScreen].bounds.size.height)
+
+
+#pragma mark weak self for block
+
+#if !ZZWeakifySelf
+#define ZZWeakifySelf \
+__weak __typeof(&*self)zz_weak_object = self
+
+#define ZZStrongifySelf \
+__strong __typeof(&*zz_weak_object)self = zz_weak_object
+
+#endif
+
+
+#define BDBSColorRGBA(r,g,b,a) \
+[UIColor colorWithRed:r / 255.0 green:g / 255.0 blue:b / 255.0 alpha:a]
+
+#define RandomColor \
+BDBSColorRGBA(random() % 256, random() % 256, random() % 256, 1.0)
+
+#endif /* TabViewController_h */
